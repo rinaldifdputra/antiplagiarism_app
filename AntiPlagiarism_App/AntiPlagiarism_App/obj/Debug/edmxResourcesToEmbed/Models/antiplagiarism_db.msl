@@ -1,0 +1,292 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="antiplagiarism_dbModelStoreContainer" CdmEntityContainer="antiplagiarism_dbEntities">
+    <EntitySetMapping Name="abouts">
+      <EntityTypeMapping TypeName="antiplagiarism_dbModel.about">
+        <MappingFragment StoreEntitySet="about">
+          <ScalarProperty Name="aboutID" ColumnName="aboutID" />
+          <ScalarProperty Name="aboutTitle" ColumnName="aboutTitle" />
+          <ScalarProperty Name="aboutDesc" ColumnName="aboutDesc" />
+          <ScalarProperty Name="aboutImg" ColumnName="aboutImg" />
+          <ScalarProperty Name="last_update" ColumnName="last_update" />
+          <ScalarProperty Name="ID_user" ColumnName="ID_user" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="approval_detail">
+      <EntityTypeMapping TypeName="antiplagiarism_dbModel.approval_detail">
+        <MappingFragment StoreEntitySet="approval_detail">
+          <ScalarProperty Name="detailID" ColumnName="detailID" />
+          <ScalarProperty Name="approvalID" ColumnName="approvalID" />
+          <ScalarProperty Name="seq_no" ColumnName="seq_no" />
+          <ScalarProperty Name="apv_next" ColumnName="apv_next" />
+          <ScalarProperty Name="is_approved" ColumnName="is_approved" />
+          <ScalarProperty Name="apv_by" ColumnName="apv_by" />
+          <ScalarProperty Name="last_update" ColumnName="last_update" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="approval_header">
+      <EntityTypeMapping TypeName="antiplagiarism_dbModel.approval_header">
+        <MappingFragment StoreEntitySet="approval_header">
+          <ScalarProperty Name="approvalID" ColumnName="approvalID" />
+          <ScalarProperty Name="apvType" ColumnName="apvType" />
+          <ScalarProperty Name="keyID" ColumnName="keyID" />
+          <ScalarProperty Name="keyNm" ColumnName="keyNm" />
+          <ScalarProperty Name="ID_user" ColumnName="ID_user" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="is_finish" ColumnName="is_finish" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="approval_scheme">
+      <EntityTypeMapping TypeName="antiplagiarism_dbModel.approval_scheme">
+        <MappingFragment StoreEntitySet="approval_scheme">
+          <ScalarProperty Name="schemeID" ColumnName="schemeID" />
+          <ScalarProperty Name="apvType" ColumnName="apvType" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="ID_user" ColumnName="ID_user" />
+          <ScalarProperty Name="is_level" ColumnName="is_level" />
+          <ScalarProperty Name="max_level" ColumnName="max_level" />
+          <ScalarProperty Name="sp_name" ColumnName="sp_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="approval_scheme_detail">
+      <EntityTypeMapping TypeName="antiplagiarism_dbModel.approval_scheme_detail">
+        <MappingFragment StoreEntitySet="approval_scheme_detail">
+          <ScalarProperty Name="detailID" ColumnName="detailID" />
+          <ScalarProperty Name="schemeID" ColumnName="schemeID" />
+          <ScalarProperty Name="seq_no" ColumnName="seq_no" />
+          <ScalarProperty Name="apv_next" ColumnName="apv_next" />
+          <ScalarProperty Name="last_update" ColumnName="last_update" />
+          <ScalarProperty Name="chain_type" ColumnName="chain_type" />
+          <ScalarProperty Name="level_code" ColumnName="level_code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="classrooms">
+      <EntityTypeMapping TypeName="antiplagiarism_dbModel.classroom">
+        <MappingFragment StoreEntitySet="classroom">
+          <ScalarProperty Name="classID" ColumnName="classID" />
+          <ScalarProperty Name="classNm" ColumnName="classNm" />
+          <ScalarProperty Name="info" ColumnName="info" />
+          <ScalarProperty Name="startDt" ColumnName="startDt" />
+          <ScalarProperty Name="endDt" ColumnName="endDt" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="isPrivate" ColumnName="isPrivate" />
+          <ScalarProperty Name="last_update" ColumnName="last_update" />
+          <ScalarProperty Name="ID_user" ColumnName="ID_user" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="classroom_detail">
+      <EntityTypeMapping TypeName="antiplagiarism_dbModel.classroom_detail">
+        <MappingFragment StoreEntitySet="classroom_detail">
+          <ScalarProperty Name="detailID" ColumnName="detailID" />
+          <ScalarProperty Name="classID" ColumnName="classID" />
+          <ScalarProperty Name="ID_user" ColumnName="ID_user" />
+          <ScalarProperty Name="roleID" ColumnName="roleID" />
+          <ScalarProperty Name="joinDt" ColumnName="joinDt" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="classroom_upload">
+      <EntityTypeMapping TypeName="antiplagiarism_dbModel.classroom_upload">
+        <MappingFragment StoreEntitySet="classroom_upload">
+          <ScalarProperty Name="uploadID" ColumnName="uploadID" />
+          <ScalarProperty Name="classID" ColumnName="classID" />
+          <ScalarProperty Name="journalTitle" ColumnName="journalTitle" />
+          <ScalarProperty Name="info" ColumnName="info" />
+          <ScalarProperty Name="author" ColumnName="author" />
+          <ScalarProperty Name="journalPath" ColumnName="journalPath" />
+          <ScalarProperty Name="filesize" ColumnName="filesize" />
+          <ScalarProperty Name="pageCount" ColumnName="pageCount" />
+          <ScalarProperty Name="wordCount" ColumnName="wordCount" />
+          <ScalarProperty Name="characterCount" ColumnName="characterCount" />
+          <ScalarProperty Name="similarityIndex" ColumnName="similarityIndex" />
+          <ScalarProperty Name="similarityCount" ColumnName="similarityCount" />
+          <ScalarProperty Name="grading" ColumnName="grading" />
+          <ScalarProperty Name="hasGraded" ColumnName="hasGraded" />
+          <ScalarProperty Name="response" ColumnName="response" />
+          <ScalarProperty Name="uploadDt" ColumnName="uploadDt" />
+          <ScalarProperty Name="last_update" ColumnName="last_update" />
+          <ScalarProperty Name="ID_user" ColumnName="ID_user" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="hows">
+      <EntityTypeMapping TypeName="antiplagiarism_dbModel.how">
+        <MappingFragment StoreEntitySet="hows">
+          <ScalarProperty Name="howID" ColumnName="howID" />
+          <ScalarProperty Name="howTitle" ColumnName="howTitle" />
+          <ScalarProperty Name="howDesc" ColumnName="howDesc" />
+          <ScalarProperty Name="howImg" ColumnName="howImg" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="last_update" ColumnName="last_update" />
+          <ScalarProperty Name="ID_user" ColumnName="ID_user" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="journal_category">
+      <EntityTypeMapping TypeName="antiplagiarism_dbModel.journal_category">
+        <MappingFragment StoreEntitySet="journal_category">
+          <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+          <ScalarProperty Name="categoryNm" ColumnName="categoryNm" />
+          <ScalarProperty Name="info" ColumnName="info" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="last_update" ColumnName="last_update" />
+          <ScalarProperty Name="ID_user" ColumnName="ID_user" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="journal_storage">
+      <EntityTypeMapping TypeName="antiplagiarism_dbModel.journal_storage">
+        <MappingFragment StoreEntitySet="journal_storage">
+          <ScalarProperty Name="storageID" ColumnName="storageID" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+          <ScalarProperty Name="info" ColumnName="info" />
+          <ScalarProperty Name="author" ColumnName="author" />
+          <ScalarProperty Name="filePath" ColumnName="filePath" />
+          <ScalarProperty Name="wordCount" ColumnName="wordCount" />
+          <ScalarProperty Name="characterCount" ColumnName="characterCount" />
+          <ScalarProperty Name="grading" ColumnName="grading" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="publishDt" ColumnName="publishDt" />
+          <ScalarProperty Name="last_update" ColumnName="last_update" />
+          <ScalarProperty Name="ID_user" ColumnName="ID_user" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="local_compareList">
+      <EntityTypeMapping TypeName="antiplagiarism_dbModel.local_compareList">
+        <MappingFragment StoreEntitySet="local_compareList">
+          <ScalarProperty Name="localID" ColumnName="localID" />
+          <ScalarProperty Name="local_title" ColumnName="local_title" />
+          <ScalarProperty Name="info" ColumnName="info" />
+          <ScalarProperty Name="local_url" ColumnName="local_url" />
+          <ScalarProperty Name="author" ColumnName="author" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="last_update" ColumnName="last_update" />
+          <ScalarProperty Name="ID_user" ColumnName="ID_user" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="news">
+      <EntityTypeMapping TypeName="antiplagiarism_dbModel.news">
+        <MappingFragment StoreEntitySet="news">
+          <ScalarProperty Name="newsID" ColumnName="newsID" />
+          <ScalarProperty Name="newsTitle" ColumnName="newsTitle" />
+          <ScalarProperty Name="newsInfo" ColumnName="newsInfo" />
+          <ScalarProperty Name="last_update" ColumnName="last_update" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="ID_user" ColumnName="ID_user" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="roles">
+      <EntityTypeMapping TypeName="antiplagiarism_dbModel.role">
+        <MappingFragment StoreEntitySet="roles">
+          <ScalarProperty Name="roleID" ColumnName="roleID" />
+          <ScalarProperty Name="roleNm" ColumnName="roleNm" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="settings">
+      <EntityTypeMapping TypeName="antiplagiarism_dbModel.setting">
+        <MappingFragment StoreEntitySet="settings">
+          <ScalarProperty Name="settingsID" ColumnName="settingsID" />
+          <ScalarProperty Name="max_error_rate" ColumnName="max_error_rate" />
+          <ScalarProperty Name="enable_web_compare" ColumnName="enable_web_compare" />
+          <ScalarProperty Name="enable_local_compare" ColumnName="enable_local_compare" />
+          <ScalarProperty Name="approval_system" ColumnName="approval_system" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sliders">
+      <EntityTypeMapping TypeName="antiplagiarism_dbModel.slider">
+        <MappingFragment StoreEntitySet="slider">
+          <ScalarProperty Name="sliderID" ColumnName="sliderID" />
+          <ScalarProperty Name="sliderTitle" ColumnName="sliderTitle" />
+          <ScalarProperty Name="sliderHtml" ColumnName="sliderHtml" />
+          <ScalarProperty Name="sliderImg" ColumnName="sliderImg" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="last_update" ColumnName="last_update" />
+          <ScalarProperty Name="ID_user" ColumnName="ID_user" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="upload_check">
+      <EntityTypeMapping TypeName="antiplagiarism_dbModel.upload_check">
+        <MappingFragment StoreEntitySet="upload_check">
+          <ScalarProperty Name="checkID" ColumnName="checkID" />
+          <ScalarProperty Name="uploadID" ColumnName="uploadID" />
+          <ScalarProperty Name="sourceCheck" ColumnName="sourceCheck" />
+          <ScalarProperty Name="similarityIndex" ColumnName="similarityIndex" />
+          <ScalarProperty Name="isLocal" ColumnName="isLocal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="upload_check_detail">
+      <EntityTypeMapping TypeName="antiplagiarism_dbModel.upload_check_detail">
+        <MappingFragment StoreEntitySet="upload_check_detail">
+          <ScalarProperty Name="checkdetID" ColumnName="checkdetID" />
+          <ScalarProperty Name="checkID" ColumnName="checkID" />
+          <ScalarProperty Name="beginIndex" ColumnName="beginIndex" />
+          <ScalarProperty Name="endIndex" ColumnName="endIndex" />
+          <ScalarProperty Name="colorText" ColumnName="colorText" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="similarityIndex" ColumnName="similarityIndex" />
+          <ScalarProperty Name="notes" ColumnName="notes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="antiplagiarism_dbModel.user">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="ID_user" ColumnName="ID_user" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="roleID" ColumnName="roleID" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="web_compareList">
+      <EntityTypeMapping TypeName="antiplagiarism_dbModel.web_compareList">
+        <MappingFragment StoreEntitySet="web_compareList">
+          <ScalarProperty Name="compareID" ColumnName="compareID" />
+          <ScalarProperty Name="web_title" ColumnName="web_title" />
+          <ScalarProperty Name="info" ColumnName="info" />
+          <ScalarProperty Name="web_url" ColumnName="web_url" />
+          <ScalarProperty Name="author" ColumnName="author" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="last_update" ColumnName="last_update" />
+          <ScalarProperty Name="ID_user" ColumnName="ID_user" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="v_classroom">
+      <EntityTypeMapping TypeName="antiplagiarism_dbModel.v_classroom">
+        <MappingFragment StoreEntitySet="v_classroom">
+          <ScalarProperty Name="classID" ColumnName="classID" />
+          <ScalarProperty Name="classNm" ColumnName="classNm" />
+          <ScalarProperty Name="info" ColumnName="info" />
+          <ScalarProperty Name="startDt" ColumnName="startDt" />
+          <ScalarProperty Name="endDt" ColumnName="endDt" />
+          <ScalarProperty Name="last_update" ColumnName="last_update" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="isPrivate" ColumnName="isPrivate" />
+          <ScalarProperty Name="username" ColumnName="username" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

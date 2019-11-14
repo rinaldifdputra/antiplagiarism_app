@@ -1,0 +1,83 @@
+﻿@model AntiPlagiarism_App.Models.classroom
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>classroom</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.classNm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.classNm)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.info)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.info)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.startDt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.startDt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.endDt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.endDt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.active)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.active)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.isPrivate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isPrivate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.last_update)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.last_update)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user.username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user.username)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.classID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<AntiPlagiarism_App.Models.news>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.newsTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.newsInfo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.last_update)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.active)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.user.username)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.newsTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.newsInfo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.last_update)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.active)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.user.username)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.newsID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.newsID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.newsID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,71 @@
+﻿@model IEnumerable<AntiPlagiarism_App.Models.user>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card mb-3">
+            <div class="card-body">
+                <div class="card-title mb-4">Daftar User</div>
+                <div class="separator-breadcrumb border-top"></div>
+                <a href="@Url.Action("Create","Users")"><img style="height:30px" src="@Url.Content("~/Content/assets/images/add.jpg")" /></a>
+                <br />
+                <br />
+                <table class="table">
+                    <tr>
+                        <th>
+                            Username
+                        </th>
+                        <th>
+                            Email
+                        </th>
+                        <th>
+                            Phone
+                        </th>
+                        <th>
+                            Status
+                        </th>
+                        <th>
+                            Role
+                        </th>
+                        <th>Action</th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.username)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.phone)
+                            </td>
+                            <td>
+                                @if (item.active == 1)
+                                {
+                                    <span>Aktif</span>
+                                }
+                                else if (item.active == 0)
+                                {
+                                    <span>Non Aktif</span>
+                                }
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.role.roleNm)
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Edit", "Users", new { id = item.ID_user })"><img style="height:20px;" src="@Url.Content("~/Content/assets/images/edit.png")" /></a>
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>

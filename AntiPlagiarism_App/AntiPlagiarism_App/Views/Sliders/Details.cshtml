@@ -1,0 +1,67 @@
+﻿@model AntiPlagiarism_App.Models.slider
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>slider</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.sliderTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sliderTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sliderHtml)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sliderHtml)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sliderImg)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sliderImg)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.active)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.active)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.last_update)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.last_update)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user.username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user.username)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.sliderID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

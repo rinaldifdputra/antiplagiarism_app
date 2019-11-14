@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0832d7b996dd4a24920c77f22a73df83" Name="Diagram1">
+        <EntityTypeShape EntityType="antiplagiarism_dbModel.about" Width="1.5" PointX="5.25" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="antiplagiarism_dbModel.approval_detail" Width="1.5" PointX="7.5" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="antiplagiarism_dbModel.approval_header" Width="1.5" PointX="5.25" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="antiplagiarism_dbModel.approval_scheme" Width="1.5" PointX="5.25" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="antiplagiarism_dbModel.approval_scheme_detail" Width="1.5" PointX="7.5" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="antiplagiarism_dbModel.classroom" Width="1.5" PointX="5.25" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="antiplagiarism_dbModel.classroom_detail" Width="1.5" PointX="7.5" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="antiplagiarism_dbModel.classroom_upload" Width="1.5" PointX="7.5" PointY="24.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="antiplagiarism_dbModel.how" Width="1.5" PointX="5.25" PointY="23.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="antiplagiarism_dbModel.journal_category" Width="1.5" PointX="5.25" PointY="26.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="antiplagiarism_dbModel.journal_storage" Width="1.5" PointX="10.5" PointY="24.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="antiplagiarism_dbModel.local_compareList" Width="1.5" PointX="5.25" PointY="30.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="antiplagiarism_dbModel.news" Width="1.5" PointX="5.25" PointY="33.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="antiplagiarism_dbModel.role" Width="1.5" PointX="0.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="antiplagiarism_dbModel.setting" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="antiplagiarism_dbModel.slider" Width="1.5" PointX="5.25" PointY="36.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="antiplagiarism_dbModel.upload_check" Width="1.5" PointX="9.75" PointY="29.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="antiplagiarism_dbModel.upload_check_detail" Width="1.5" PointX="12" PointY="29.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="antiplagiarism_dbModel.user" Width="1.5" PointX="3" PointY="23.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="antiplagiarism_dbModel.web_compareList" Width="1.5" PointX="5.25" PointY="40" IsExpanded="true" />
+        <EntityTypeShape EntityType="antiplagiarism_dbModel.v_classroom" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="antiplagiarism_dbModel.FK__about__ID_user__70DDC3D8" ManuallyRouted="false" />
+        <AssociationConnector Association="antiplagiarism_dbModel.FK__approval___last___6754599E" ManuallyRouted="false" />
+        <AssociationConnector Association="antiplagiarism_dbModel.FK__approval___ID_us__6477ECF3" ManuallyRouted="false" />
+        <AssociationConnector Association="antiplagiarism_dbModel.FK__approval___ID_us__6B24EA82" ManuallyRouted="false" />
+        <AssociationConnector Association="antiplagiarism_dbModel.FK__approval___schem__6E01572D" ManuallyRouted="false" />
+        <AssociationConnector Association="antiplagiarism_dbModel.FK__classroom__class__2B3F6F97" ManuallyRouted="false" />
+        <AssociationConnector Association="antiplagiarism_dbModel.FK__classroom__class__37A5467C" ManuallyRouted="false" />
+        <AssociationConnector Association="antiplagiarism_dbModel.FK__classroom__ID_us__2C3393D0" ManuallyRouted="false" />
+        <AssociationConnector Association="antiplagiarism_dbModel.FK__classroom__roleI__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="antiplagiarism_dbModel.FK__classroom__ID_us__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="antiplagiarism_dbModel.FK__upload_ch__uploa__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="antiplagiarism_dbModel.FK__hows__ID_user__778AC167" ManuallyRouted="false" />
+        <AssociationConnector Association="antiplagiarism_dbModel.FK__journal_c__ID_us__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="antiplagiarism_dbModel.FK__journal_s__ID_us__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="antiplagiarism_dbModel.FK__journal_s__ID_us__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="antiplagiarism_dbModel.FK__local_com__ID_us__60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="antiplagiarism_dbModel.FK__news__ID_user__1A14E395" ManuallyRouted="false" />
+        <AssociationConnector Association="antiplagiarism_dbModel.FK__users__roleID__15502E78" ManuallyRouted="false" />
+        <AssociationConnector Association="antiplagiarism_dbModel.FK__slider__ID_user__73BA3083" ManuallyRouted="false" />
+        <AssociationConnector Association="antiplagiarism_dbModel.FK__upload_ch__check__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="antiplagiarism_dbModel.FK__web_compa__ID_us__5CD6CB2B" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

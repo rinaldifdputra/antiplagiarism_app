@@ -1,0 +1,51 @@
+﻿@model IEnumerable<AntiPlagiarism_App.Models.role>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card mb-3">
+            <div class="card-body">
+                <div class="card-title mb-4">Daftar Role</div>
+                <div class="separator-breadcrumb border-top"></div>
+                <a href="@Url.Action("Create","Roles")"><img style="height:30px" src="@Url.Content("~/Content/assets/images/add.jpg")" /></a>
+                <br />
+                <br />
+                <table class="table" id="roles">
+                   <thead>
+                       <tr>
+                           <th>
+                               Role
+                           </th>
+                           <th>
+                               Action
+                           </th>
+                       </tr>
+                   </thead>
+
+                    @foreach (var item in Model)
+                    {
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.roleNm)
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("Edit", "Roles", new { id = item.roleID })"><img style="height:20px;" src="@Url.Content("~/Content/assets/images/edit.png")" /></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+<script>
+    $(document).ready(function () {
+        $('#roles').DataTable();
+    });
+</script>

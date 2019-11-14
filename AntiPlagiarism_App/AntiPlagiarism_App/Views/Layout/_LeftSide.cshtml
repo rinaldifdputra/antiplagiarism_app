@@ -1,0 +1,30 @@
+﻿<div class="side-content-wrap">
+    <div class="sidebar-left open" data-perfect-scrollbar data-suppress-scroll-x="true">
+        <ul class="navigation-left">
+           <li class="nav-item" data-item="pengguna">
+                <a class="nav-item-hold" href="#">
+                    <img src="@Url.Content("~/Content/assets/images/User.png")" style="height:50px;" />
+                    <span class="nav-text">Setting Pengguna</span>
+                </a>
+                <div class="triangle"></div>
+            </li>
+        </ul>
+    </div>
+    <div class="sidebar-left-secondary" data-perfect-scrollbar data-suppress-scroll-x="true">
+         <ul class="childNav" data-parent="pengguna">
+            <li class="nav-item">
+                <a href="@Url.Action("Index","Users")">
+                    <img style="height:20px;" src="@Url.Content("~/Content/assets/images/user-cliparts-128589-1491725.png")" /> &nbsp;
+                    <span class="item-name">User</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="@Url.Action("Index","Roles")">
+                    <img style="height:20px;" src="@Url.Content("~/Content/assets/images/role.jpg")" /> &nbsp;
+                    <span class="item-name">Role</span>
+                </a>
+            </li>
+        </ul>
+     </div>
+    <div class="sidebar-overlay"></div>
+</div>

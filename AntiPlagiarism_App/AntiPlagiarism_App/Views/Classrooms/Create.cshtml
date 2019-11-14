@@ -1,0 +1,86 @@
+﻿@using Telerik.Web.Mvc.UI
+@model AntiPlagiarism_App.Models.classroom
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="card-title">Tambah Kelas</div>
+                    <div class="separator-breadcrumb border-top"></div>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        <table>
+                            <tr>
+                                <td>Nama Kelas</td>
+                                <td>:</td>
+                                <td>
+                                    @Html.EditorFor(model => model.classNm, new { htmlAttributes = new { @class = "form-control", style = "width:800px;" } })
+                                    @Html.ValidationMessageFor(model => model.classNm, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Info Kelas</td>
+                                <td>:</td>
+                                <td>
+                                    @Html.TextAreaFor(model => model.info, htmlAttributes: new { @class = "form-control", @required = "required", style = "width:800px; height:500px;" })
+                                    @Html.ValidationMessageFor(model => model.info, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Dari Tanggal</td>
+                                <td>:</td>
+                                <td>
+                                    @Html.Telerik().DatePickerFor(model => model.startDt)
+                                    @Html.ValidationMessageFor(model => model.startDt, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Sampai Tanggal</td>
+                                <td>:</td>
+                                <td>
+                                    @Html.Telerik().DatePickerFor(model => model.endDt)
+                                    @Html.ValidationMessageFor(model => model.endDt, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Status</td>
+                                <td>:</td>
+                                <td>
+                                    @Html.RadioButtonFor(model => model.active, 1, new { htmlAttributes = new { @class = "form-control" } }) Aktif
+                                    @Html.RadioButtonFor(model => model.active, 0, new { htmlAttributes = new { @class = "form-control" } }) Non Aktif
+                                    @Html.ValidationMessageFor(model => model.active, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Private/Public</td>
+                                <td>:</td>
+                                <td>
+                                    @Html.RadioButtonFor(model => model.isPrivate, 1, new { htmlAttributes = new { @class = "form-control" } }) Private
+                                    @Html.RadioButtonFor(model => model.isPrivate, 0, new { htmlAttributes = new { @class = "form-control" } }) Public
+                                    @Html.ValidationMessageFor(model => model.isPrivate, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <input type="submit" value="Simpan" class="btn btn-success" />
+                                    <a href="@Url.Action("Index","Classrooms")" class="btn btn-warning">Kembali</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

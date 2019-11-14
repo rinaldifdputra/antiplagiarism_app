@@ -1,0 +1,120 @@
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<AntiPlagiarism_App.Models.v_classroom>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card mb-3">
+            <div class="card-body">
+                <table style="width:100%;">
+                    <tr>
+                        @using (Html.BeginForm())
+                        {
+                            <td><b>Cari Judul</b></td>
+                            <td><b>:</b></td>
+                            <td>
+                                @Html.TextBox("SearchString", null, new { @class = "form-control" })
+
+                            </td>
+                            <td>
+                                <input type="submit" class="btn btn-primary" value="Cari" />
+                            </td>
+                        }
+                        <td style="width:20%"></td>
+                        <td><a href="@Url.Action("Create","Classrooms")"><img style="height:30px" src="@Url.Content("~/Content/assets/images/add.jpg")" /></a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@foreach (var item in Model)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <table>
+                        <tr>
+                            <td>
+                                <img src="@Url.Content("~/Content/assets/images/book-open-outline-filled.png")" style="height:20px;" />
+                            </td>
+                            <td>
+                                &nbsp;<h5><b>@Html.DisplayFor(modelItem => item.classNm)</b></h5>
+                            </td>
+                            <td><a href="@Url.Action("Edit", "Classrooms", new { id = item.classID })"><img style="height:20px;" src="@Url.Content("~/Content/assets/images/edit.png")" /></a></td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr style="color:blue;">
+                            <td></td>
+                            <td>&nbsp;&nbsp;Dari</td>
+                            <td>:</td>
+                            <td>@Html.DisplayFor(modelItem => item.startDt) s/d @Html.DisplayFor(modelItem => item.endDt)</td>
+                        </tr>
+                        <tr style="color:blue;">
+                            <td></td>
+                            <td>&nbsp;&nbsp;Status</td>
+                            <td>:</td>
+                            <td>
+                                @if (item.isPrivate == 1)
+                                {
+                                    <span>Private</span>
+                                }
+                                else if (item.isPrivate == 0)
+                                {
+                                    <span>Public</span>
+                                }
+                            </td>
+                        </tr>
+                        <tr style="color:blue;">
+                            <td></td>
+                            <td>&nbsp;&nbsp;Status Aktif</td>
+                            <td>:</td>
+                            <td colspan="2">
+                                @if (item.active == 1)
+                                {
+                                    <span>Aktif</span>
+                                }
+                                else if (item.active == 0)
+                                {
+                                    <span>Non Aktif</span>
+                                }
+                            </td>
+                        </tr>
+                        <tr style="color:blue;">
+                            <td></td>
+                            <td>&nbsp;&nbsp;Created By</td>
+                            <td>:</td>
+                            <td colspan="2">@Html.DisplayFor(modelItem => item.username)</td>
+                        </tr>
+                        <tr style="color:blue;">
+                            <td></td>
+                            <td>&nbsp;&nbsp;Last Updated</td>
+                            <td>:</td>
+                            <td colspan="2">@Html.DisplayFor(modelItem => item.last_update)</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div id="container" style="margin-left: auto; margin-right:auto;">
+    <p></p>
+    <p></p>
+    <div class="pagination" style="margin-left: auto; margin-right:auto;">
+        Halaman ke
+        @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+        dari @Model.PageCount Halaman
+    </div>
+    <div class="pagination">
+        <span style="margin-left: auto; margin-right:auto;">@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))</span>  
+    </div>
+</div>

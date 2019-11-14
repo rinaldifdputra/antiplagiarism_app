@@ -1,0 +1,64 @@
+﻿@model IEnumerable<AntiPlagiarism_App.Models.slider>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.sliderTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sliderHtml)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sliderImg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.active)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.last_update)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.user.username)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.sliderTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sliderHtml)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sliderImg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.active)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.last_update)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.user.username)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.sliderID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.sliderID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.sliderID })
+        </td>
+    </tr>
+}
+
+</table>

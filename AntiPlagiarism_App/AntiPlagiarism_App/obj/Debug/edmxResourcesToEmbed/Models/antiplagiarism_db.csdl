@@ -1,0 +1,706 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="antiplagiarism_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="about">
+    <Key>
+      <PropertyRef Name="aboutID" />
+    </Key>
+    <Property Name="aboutID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="aboutTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="aboutDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="aboutImg" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="last_update" Type="DateTime" Precision="3" />
+    <Property Name="ID_user" Type="Int64" />
+    <NavigationProperty Name="user" Relationship="Self.FK__about__ID_user__70DDC3D8" FromRole="about" ToRole="users" />
+  </EntityType>
+  <EntityType Name="approval_detail">
+    <Key>
+      <PropertyRef Name="detailID" />
+    </Key>
+    <Property Name="detailID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="approvalID" Type="Int64" />
+    <Property Name="seq_no" Type="Int32" />
+    <Property Name="apv_next" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="is_approved" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="apv_by" Type="Int64" />
+    <Property Name="last_update" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="approval_header" Relationship="Self.FK__approval___last___6754599E" FromRole="approval_detail" ToRole="approval_header" />
+  </EntityType>
+  <EntityType Name="approval_header">
+    <Key>
+      <PropertyRef Name="approvalID" />
+    </Key>
+    <Property Name="approvalID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="apvType" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="keyID" Type="Int64" />
+    <Property Name="keyNm" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+    <Property Name="ID_user" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="is_finish" Type="Int16" />
+    <NavigationProperty Name="approval_detail" Relationship="Self.FK__approval___last___6754599E" FromRole="approval_header" ToRole="approval_detail" />
+    <NavigationProperty Name="user" Relationship="Self.FK__approval___ID_us__6477ECF3" FromRole="approval_header" ToRole="users" />
+  </EntityType>
+  <EntityType Name="approval_scheme">
+    <Key>
+      <PropertyRef Name="schemeID" />
+    </Key>
+    <Property Name="schemeID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="apvType" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="ID_user" Type="Int64" />
+    <Property Name="is_level" Type="Int16" />
+    <Property Name="max_level" Type="Int16" />
+    <Property Name="sp_name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="user" Relationship="Self.FK__approval___ID_us__6B24EA82" FromRole="approval_scheme" ToRole="users" />
+    <NavigationProperty Name="approval_scheme_detail" Relationship="Self.FK__approval___schem__6E01572D" FromRole="approval_scheme" ToRole="approval_scheme_detail" />
+  </EntityType>
+  <EntityType Name="approval_scheme_detail">
+    <Key>
+      <PropertyRef Name="detailID" />
+    </Key>
+    <Property Name="detailID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="schemeID" Type="Int64" />
+    <Property Name="seq_no" Type="Int32" />
+    <Property Name="apv_next" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="last_update" Type="DateTime" Precision="3" />
+    <Property Name="chain_type" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="level_code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="approval_scheme" Relationship="Self.FK__approval___schem__6E01572D" FromRole="approval_scheme_detail" ToRole="approval_scheme" />
+  </EntityType>
+  <EntityType Name="classroom">
+    <Key>
+      <PropertyRef Name="classID" />
+    </Key>
+    <Property Name="classID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="classNm" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="info" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="startDt" Type="DateTime" Precision="3" />
+    <Property Name="endDt" Type="DateTime" Precision="3" />
+    <Property Name="active" Type="Int16" />
+    <Property Name="isPrivate" Type="Int16" />
+    <Property Name="last_update" Type="DateTime" Precision="3" />
+    <Property Name="ID_user" Type="Int64" />
+    <NavigationProperty Name="classroom_detail" Relationship="Self.FK__classroom__class__2B3F6F97" FromRole="classroom" ToRole="classroom_detail" />
+    <NavigationProperty Name="classroom_upload" Relationship="Self.FK__classroom__class__37A5467C" FromRole="classroom" ToRole="classroom_upload" />
+    <NavigationProperty Name="user" Relationship="Self.FK__classroom__ID_us__2C3393D0" FromRole="classroom" ToRole="users" />
+  </EntityType>
+  <EntityType Name="classroom_detail">
+    <Key>
+      <PropertyRef Name="detailID" />
+    </Key>
+    <Property Name="detailID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="classID" Type="Int64" />
+    <Property Name="ID_user" Type="Int64" />
+    <Property Name="roleID" Type="Int64" />
+    <Property Name="joinDt" Type="DateTime" Precision="3" />
+    <Property Name="active" Type="Int16" />
+    <NavigationProperty Name="classroom" Relationship="Self.FK__classroom__class__2B3F6F97" FromRole="classroom_detail" ToRole="classroom" />
+    <NavigationProperty Name="role" Relationship="Self.FK__classroom__roleI__3E52440B" FromRole="classroom_detail" ToRole="roles" />
+  </EntityType>
+  <EntityType Name="classroom_upload">
+    <Key>
+      <PropertyRef Name="uploadID" />
+    </Key>
+    <Property Name="uploadID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="classID" Type="Int64" />
+    <Property Name="journalTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="info" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="author" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="journalPath" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="filesize" Type="Decimal" Precision="14" Scale="4" />
+    <Property Name="pageCount" Type="Int32" />
+    <Property Name="wordCount" Type="Int64" />
+    <Property Name="characterCount" Type="Int64" />
+    <Property Name="similarityIndex" Type="Decimal" Precision="14" Scale="4" />
+    <Property Name="similarityCount" Type="Int32" />
+    <Property Name="grading" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="hasGraded" Type="Int16" />
+    <Property Name="response" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="uploadDt" Type="DateTime" Precision="3" />
+    <Property Name="last_update" Type="DateTime" Precision="3" />
+    <Property Name="ID_user" Type="Int64" />
+    <NavigationProperty Name="classroom" Relationship="Self.FK__classroom__class__37A5467C" FromRole="classroom_upload" ToRole="classroom" />
+    <NavigationProperty Name="user" Relationship="Self.FK__classroom__ID_us__38996AB5" FromRole="classroom_upload" ToRole="users" />
+    <NavigationProperty Name="upload_check" Relationship="Self.FK__upload_ch__uploa__4222D4EF" FromRole="classroom_upload" ToRole="upload_check" />
+  </EntityType>
+  <EntityType Name="how">
+    <Key>
+      <PropertyRef Name="howID" />
+    </Key>
+    <Property Name="howID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="howTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="howDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="howImg" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="active" Type="Int16" />
+    <Property Name="last_update" Type="DateTime" Precision="3" />
+    <Property Name="ID_user" Type="Int64" />
+    <NavigationProperty Name="user" Relationship="Self.FK__hows__ID_user__778AC167" FromRole="hows" ToRole="users" />
+  </EntityType>
+  <EntityType Name="journal_category">
+    <Key>
+      <PropertyRef Name="categoryID" />
+    </Key>
+    <Property Name="categoryID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="categoryNm" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="info" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="active" Type="Int16" />
+    <Property Name="last_update" Type="DateTime" Precision="3" />
+    <Property Name="ID_user" Type="Int64" />
+    <NavigationProperty Name="user" Relationship="Self.FK__journal_c__ID_us__49C3F6B7" FromRole="journal_category" ToRole="users" />
+    <NavigationProperty Name="journal_storage" Relationship="Self.FK__journal_s__ID_us__5441852A" FromRole="journal_category" ToRole="journal_storage" />
+  </EntityType>
+  <EntityType Name="journal_storage">
+    <Key>
+      <PropertyRef Name="storageID" />
+    </Key>
+    <Property Name="storageID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="categoryID" Type="Int64" />
+    <Property Name="info" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="author" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="filePath" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="wordCount" Type="Int64" />
+    <Property Name="characterCount" Type="Int64" />
+    <Property Name="grading" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="active" Type="Int16" />
+    <Property Name="publishDt" Type="DateTime" Precision="3" />
+    <Property Name="last_update" Type="DateTime" Precision="3" />
+    <Property Name="ID_user" Type="Int64" />
+    <NavigationProperty Name="journal_category" Relationship="Self.FK__journal_s__ID_us__5441852A" FromRole="journal_storage" ToRole="journal_category" />
+    <NavigationProperty Name="user" Relationship="Self.FK__journal_s__ID_us__5535A963" FromRole="journal_storage" ToRole="users" />
+  </EntityType>
+  <EntityType Name="local_compareList">
+    <Key>
+      <PropertyRef Name="localID" />
+    </Key>
+    <Property Name="localID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="local_title" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="info" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="local_url" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="author" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="active" Type="Int16" />
+    <Property Name="last_update" Type="DateTime" Precision="3" />
+    <Property Name="ID_user" Type="Int64" />
+    <NavigationProperty Name="user" Relationship="Self.FK__local_com__ID_us__60A75C0F" FromRole="local_compareList" ToRole="users" />
+  </EntityType>
+  <EntityType Name="news">
+    <Key>
+      <PropertyRef Name="newsID" />
+    </Key>
+    <Property Name="newsID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="newsTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="newsInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="last_update" Type="DateTime" Precision="3" />
+    <Property Name="active" Type="Int16" />
+    <Property Name="ID_user" Type="Int64" />
+    <NavigationProperty Name="user" Relationship="Self.FK__news__ID_user__1A14E395" FromRole="news" ToRole="users" />
+  </EntityType>
+  <EntityType Name="role">
+    <Key>
+      <PropertyRef Name="roleID" />
+    </Key>
+    <Property Name="roleID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="roleNm" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="classroom_detail" Relationship="Self.FK__classroom__roleI__3E52440B" FromRole="roles" ToRole="classroom_detail" />
+    <NavigationProperty Name="users" Relationship="Self.FK__users__roleID__15502E78" FromRole="roles" ToRole="users" />
+  </EntityType>
+  <EntityType Name="setting">
+    <Key>
+      <PropertyRef Name="settingsID" />
+    </Key>
+    <Property Name="settingsID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="max_error_rate" Type="Decimal" Precision="14" Scale="4" />
+    <Property Name="enable_web_compare" Type="Int16" />
+    <Property Name="enable_local_compare" Type="Int16" />
+    <Property Name="approval_system" Type="Int16" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="slider">
+    <Key>
+      <PropertyRef Name="sliderID" />
+    </Key>
+    <Property Name="sliderID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sliderTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="sliderHtml" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="sliderImg" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="active" Type="Int16" />
+    <Property Name="last_update" Type="DateTime" Precision="3" />
+    <Property Name="ID_user" Type="Int64" />
+    <NavigationProperty Name="user" Relationship="Self.FK__slider__ID_user__73BA3083" FromRole="slider" ToRole="users" />
+  </EntityType>
+  <EntityType Name="upload_check">
+    <Key>
+      <PropertyRef Name="checkID" />
+    </Key>
+    <Property Name="checkID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="uploadID" Type="Int64" />
+    <Property Name="sourceCheck" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="similarityIndex" Type="Decimal" Precision="14" Scale="4" />
+    <Property Name="isLocal" Type="Int16" />
+    <NavigationProperty Name="classroom_upload" Relationship="Self.FK__upload_ch__uploa__4222D4EF" FromRole="upload_check" ToRole="classroom_upload" />
+    <NavigationProperty Name="upload_check_detail" Relationship="Self.FK__upload_ch__check__45F365D3" FromRole="upload_check" ToRole="upload_check_detail" />
+  </EntityType>
+  <EntityType Name="upload_check_detail">
+    <Key>
+      <PropertyRef Name="checkdetID" />
+    </Key>
+    <Property Name="checkdetID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="checkID" Type="Int64" />
+    <Property Name="beginIndex" Type="Int64" />
+    <Property Name="endIndex" Type="Int64" />
+    <Property Name="colorText" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="active" Type="Int16" />
+    <Property Name="similarityIndex" Type="Decimal" Precision="14" Scale="4" />
+    <Property Name="notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="upload_check" Relationship="Self.FK__upload_ch__check__45F365D3" FromRole="upload_check_detail" ToRole="upload_check" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="ID_user" />
+    </Key>
+    <Property Name="ID_user" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="roleID" Type="Int64" />
+    <Property Name="email" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="phone" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="active" Type="Int16" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="abouts" Relationship="Self.FK__about__ID_user__70DDC3D8" FromRole="users" ToRole="about" />
+    <NavigationProperty Name="approval_header" Relationship="Self.FK__approval___ID_us__6477ECF3" FromRole="users" ToRole="approval_header" />
+    <NavigationProperty Name="approval_scheme" Relationship="Self.FK__approval___ID_us__6B24EA82" FromRole="users" ToRole="approval_scheme" />
+    <NavigationProperty Name="classrooms" Relationship="Self.FK__classroom__ID_us__2C3393D0" FromRole="users" ToRole="classroom" />
+    <NavigationProperty Name="classroom_upload" Relationship="Self.FK__classroom__ID_us__38996AB5" FromRole="users" ToRole="classroom_upload" />
+    <NavigationProperty Name="hows" Relationship="Self.FK__hows__ID_user__778AC167" FromRole="users" ToRole="hows" />
+    <NavigationProperty Name="journal_category" Relationship="Self.FK__journal_c__ID_us__49C3F6B7" FromRole="users" ToRole="journal_category" />
+    <NavigationProperty Name="journal_storage" Relationship="Self.FK__journal_s__ID_us__5535A963" FromRole="users" ToRole="journal_storage" />
+    <NavigationProperty Name="local_compareList" Relationship="Self.FK__local_com__ID_us__60A75C0F" FromRole="users" ToRole="local_compareList" />
+    <NavigationProperty Name="news" Relationship="Self.FK__news__ID_user__1A14E395" FromRole="users" ToRole="news" />
+    <NavigationProperty Name="role" Relationship="Self.FK__users__roleID__15502E78" FromRole="users" ToRole="roles" />
+    <NavigationProperty Name="sliders" Relationship="Self.FK__slider__ID_user__73BA3083" FromRole="users" ToRole="slider" />
+    <NavigationProperty Name="web_compareList" Relationship="Self.FK__web_compa__ID_us__5CD6CB2B" FromRole="users" ToRole="web_compareList" />
+  </EntityType>
+  <EntityType Name="web_compareList">
+    <Key>
+      <PropertyRef Name="compareID" />
+    </Key>
+    <Property Name="compareID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="web_title" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="info" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="web_url" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="author" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="active" Type="Int16" />
+    <Property Name="last_update" Type="DateTime" Precision="3" />
+    <Property Name="ID_user" Type="Int64" />
+    <NavigationProperty Name="user" Relationship="Self.FK__web_compa__ID_us__5CD6CB2B" FromRole="web_compareList" ToRole="users" />
+  </EntityType>
+  <EntityType Name="v_classroom">
+    <Key>
+      <PropertyRef Name="classID" />
+    </Key>
+    <Property Name="classID" Type="Int64" Nullable="false" />
+    <Property Name="classNm" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="info" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="startDt" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="endDt" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="last_update" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="active" Type="Int16" />
+    <Property Name="isPrivate" Type="Int16" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK__about__ID_user__70DDC3D8">
+    <End Role="users" Type="Self.user" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="about" Type="Self.about" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="ID_user" />
+      </Principal>
+      <Dependent Role="about">
+        <PropertyRef Name="ID_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__approval___last___6754599E">
+    <End Role="approval_header" Type="Self.approval_header" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="approval_detail" Type="Self.approval_detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="approval_header">
+        <PropertyRef Name="approvalID" />
+      </Principal>
+      <Dependent Role="approval_detail">
+        <PropertyRef Name="approvalID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__approval___ID_us__6477ECF3">
+    <End Role="users" Type="Self.user" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="approval_header" Type="Self.approval_header" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="ID_user" />
+      </Principal>
+      <Dependent Role="approval_header">
+        <PropertyRef Name="ID_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__approval___ID_us__6B24EA82">
+    <End Role="users" Type="Self.user" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="approval_scheme" Type="Self.approval_scheme" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="ID_user" />
+      </Principal>
+      <Dependent Role="approval_scheme">
+        <PropertyRef Name="ID_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__approval___schem__6E01572D">
+    <End Role="approval_scheme" Type="Self.approval_scheme" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="approval_scheme_detail" Type="Self.approval_scheme_detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="approval_scheme">
+        <PropertyRef Name="schemeID" />
+      </Principal>
+      <Dependent Role="approval_scheme_detail">
+        <PropertyRef Name="schemeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__classroom__class__2B3F6F97">
+    <End Role="classroom" Type="Self.classroom" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="classroom_detail" Type="Self.classroom_detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="classroom">
+        <PropertyRef Name="classID" />
+      </Principal>
+      <Dependent Role="classroom_detail">
+        <PropertyRef Name="classID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__classroom__class__37A5467C">
+    <End Role="classroom" Type="Self.classroom" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="classroom_upload" Type="Self.classroom_upload" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="classroom">
+        <PropertyRef Name="classID" />
+      </Principal>
+      <Dependent Role="classroom_upload">
+        <PropertyRef Name="classID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__classroom__ID_us__2C3393D0">
+    <End Role="users" Type="Self.user" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="classroom" Type="Self.classroom" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="ID_user" />
+      </Principal>
+      <Dependent Role="classroom">
+        <PropertyRef Name="ID_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__classroom__roleI__3E52440B">
+    <End Role="roles" Type="Self.role" Multiplicity="0..1" />
+    <End Role="classroom_detail" Type="Self.classroom_detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="roles">
+        <PropertyRef Name="roleID" />
+      </Principal>
+      <Dependent Role="classroom_detail">
+        <PropertyRef Name="roleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__classroom__ID_us__38996AB5">
+    <End Role="users" Type="Self.user" Multiplicity="0..1" />
+    <End Role="classroom_upload" Type="Self.classroom_upload" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="ID_user" />
+      </Principal>
+      <Dependent Role="classroom_upload">
+        <PropertyRef Name="ID_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__upload_ch__uploa__4222D4EF">
+    <End Role="classroom_upload" Type="Self.classroom_upload" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="upload_check" Type="Self.upload_check" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="classroom_upload">
+        <PropertyRef Name="uploadID" />
+      </Principal>
+      <Dependent Role="upload_check">
+        <PropertyRef Name="uploadID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__hows__ID_user__778AC167">
+    <End Role="users" Type="Self.user" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="hows" Type="Self.how" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="ID_user" />
+      </Principal>
+      <Dependent Role="hows">
+        <PropertyRef Name="ID_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__journal_c__ID_us__49C3F6B7">
+    <End Role="users" Type="Self.user" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="journal_category" Type="Self.journal_category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="ID_user" />
+      </Principal>
+      <Dependent Role="journal_category">
+        <PropertyRef Name="ID_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__journal_s__ID_us__5441852A">
+    <End Role="journal_category" Type="Self.journal_category" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="journal_storage" Type="Self.journal_storage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="journal_category">
+        <PropertyRef Name="categoryID" />
+      </Principal>
+      <Dependent Role="journal_storage">
+        <PropertyRef Name="categoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__journal_s__ID_us__5535A963">
+    <End Role="users" Type="Self.user" Multiplicity="0..1" />
+    <End Role="journal_storage" Type="Self.journal_storage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="ID_user" />
+      </Principal>
+      <Dependent Role="journal_storage">
+        <PropertyRef Name="ID_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__local_com__ID_us__60A75C0F">
+    <End Role="users" Type="Self.user" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="local_compareList" Type="Self.local_compareList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="ID_user" />
+      </Principal>
+      <Dependent Role="local_compareList">
+        <PropertyRef Name="ID_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__news__ID_user__1A14E395">
+    <End Role="users" Type="Self.user" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="news" Type="Self.news" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="ID_user" />
+      </Principal>
+      <Dependent Role="news">
+        <PropertyRef Name="ID_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__users__roleID__15502E78">
+    <End Role="roles" Type="Self.role" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="users" Type="Self.user" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="roles">
+        <PropertyRef Name="roleID" />
+      </Principal>
+      <Dependent Role="users">
+        <PropertyRef Name="roleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__slider__ID_user__73BA3083">
+    <End Role="users" Type="Self.user" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="slider" Type="Self.slider" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="ID_user" />
+      </Principal>
+      <Dependent Role="slider">
+        <PropertyRef Name="ID_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__upload_ch__check__45F365D3">
+    <End Role="upload_check" Type="Self.upload_check" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="upload_check_detail" Type="Self.upload_check_detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="upload_check">
+        <PropertyRef Name="checkID" />
+      </Principal>
+      <Dependent Role="upload_check_detail">
+        <PropertyRef Name="checkID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__web_compa__ID_us__5CD6CB2B">
+    <End Role="users" Type="Self.user" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="web_compareList" Type="Self.web_compareList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="ID_user" />
+      </Principal>
+      <Dependent Role="web_compareList">
+        <PropertyRef Name="ID_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="antiplagiarism_dbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="abouts" EntityType="Self.about" />
+    <EntitySet Name="approval_detail" EntityType="Self.approval_detail" />
+    <EntitySet Name="approval_header" EntityType="Self.approval_header" />
+    <EntitySet Name="approval_scheme" EntityType="Self.approval_scheme" />
+    <EntitySet Name="approval_scheme_detail" EntityType="Self.approval_scheme_detail" />
+    <EntitySet Name="classrooms" EntityType="Self.classroom" />
+    <EntitySet Name="classroom_detail" EntityType="Self.classroom_detail" />
+    <EntitySet Name="classroom_upload" EntityType="Self.classroom_upload" />
+    <EntitySet Name="hows" EntityType="Self.how" />
+    <EntitySet Name="journal_category" EntityType="Self.journal_category" />
+    <EntitySet Name="journal_storage" EntityType="Self.journal_storage" />
+    <EntitySet Name="local_compareList" EntityType="Self.local_compareList" />
+    <EntitySet Name="news" EntityType="Self.news" />
+    <EntitySet Name="roles" EntityType="Self.role" />
+    <EntitySet Name="settings" EntityType="Self.setting" />
+    <EntitySet Name="sliders" EntityType="Self.slider" />
+    <EntitySet Name="upload_check" EntityType="Self.upload_check" />
+    <EntitySet Name="upload_check_detail" EntityType="Self.upload_check_detail" />
+    <EntitySet Name="users" EntityType="Self.user" />
+    <EntitySet Name="web_compareList" EntityType="Self.web_compareList" />
+    <EntitySet Name="v_classroom" EntityType="Self.v_classroom" />
+    <AssociationSet Name="FK__about__ID_user__70DDC3D8" Association="Self.FK__about__ID_user__70DDC3D8">
+      <End Role="users" EntitySet="users" />
+      <End Role="about" EntitySet="abouts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__approval___last___6754599E" Association="Self.FK__approval___last___6754599E">
+      <End Role="approval_header" EntitySet="approval_header" />
+      <End Role="approval_detail" EntitySet="approval_detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__approval___ID_us__6477ECF3" Association="Self.FK__approval___ID_us__6477ECF3">
+      <End Role="users" EntitySet="users" />
+      <End Role="approval_header" EntitySet="approval_header" />
+    </AssociationSet>
+    <AssociationSet Name="FK__approval___ID_us__6B24EA82" Association="Self.FK__approval___ID_us__6B24EA82">
+      <End Role="users" EntitySet="users" />
+      <End Role="approval_scheme" EntitySet="approval_scheme" />
+    </AssociationSet>
+    <AssociationSet Name="FK__approval___schem__6E01572D" Association="Self.FK__approval___schem__6E01572D">
+      <End Role="approval_scheme" EntitySet="approval_scheme" />
+      <End Role="approval_scheme_detail" EntitySet="approval_scheme_detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__classroom__class__2B3F6F97" Association="Self.FK__classroom__class__2B3F6F97">
+      <End Role="classroom" EntitySet="classrooms" />
+      <End Role="classroom_detail" EntitySet="classroom_detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__classroom__class__37A5467C" Association="Self.FK__classroom__class__37A5467C">
+      <End Role="classroom" EntitySet="classrooms" />
+      <End Role="classroom_upload" EntitySet="classroom_upload" />
+    </AssociationSet>
+    <AssociationSet Name="FK__classroom__ID_us__2C3393D0" Association="Self.FK__classroom__ID_us__2C3393D0">
+      <End Role="users" EntitySet="users" />
+      <End Role="classroom" EntitySet="classrooms" />
+    </AssociationSet>
+    <AssociationSet Name="FK__classroom__roleI__3E52440B" Association="Self.FK__classroom__roleI__3E52440B">
+      <End Role="roles" EntitySet="roles" />
+      <End Role="classroom_detail" EntitySet="classroom_detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__classroom__ID_us__38996AB5" Association="Self.FK__classroom__ID_us__38996AB5">
+      <End Role="users" EntitySet="users" />
+      <End Role="classroom_upload" EntitySet="classroom_upload" />
+    </AssociationSet>
+    <AssociationSet Name="FK__upload_ch__uploa__4222D4EF" Association="Self.FK__upload_ch__uploa__4222D4EF">
+      <End Role="classroom_upload" EntitySet="classroom_upload" />
+      <End Role="upload_check" EntitySet="upload_check" />
+    </AssociationSet>
+    <AssociationSet Name="FK__hows__ID_user__778AC167" Association="Self.FK__hows__ID_user__778AC167">
+      <End Role="users" EntitySet="users" />
+      <End Role="hows" EntitySet="hows" />
+    </AssociationSet>
+    <AssociationSet Name="FK__journal_c__ID_us__49C3F6B7" Association="Self.FK__journal_c__ID_us__49C3F6B7">
+      <End Role="users" EntitySet="users" />
+      <End Role="journal_category" EntitySet="journal_category" />
+    </AssociationSet>
+    <AssociationSet Name="FK__journal_s__ID_us__5441852A" Association="Self.FK__journal_s__ID_us__5441852A">
+      <End Role="journal_category" EntitySet="journal_category" />
+      <End Role="journal_storage" EntitySet="journal_storage" />
+    </AssociationSet>
+    <AssociationSet Name="FK__journal_s__ID_us__5535A963" Association="Self.FK__journal_s__ID_us__5535A963">
+      <End Role="users" EntitySet="users" />
+      <End Role="journal_storage" EntitySet="journal_storage" />
+    </AssociationSet>
+    <AssociationSet Name="FK__local_com__ID_us__60A75C0F" Association="Self.FK__local_com__ID_us__60A75C0F">
+      <End Role="users" EntitySet="users" />
+      <End Role="local_compareList" EntitySet="local_compareList" />
+    </AssociationSet>
+    <AssociationSet Name="FK__news__ID_user__1A14E395" Association="Self.FK__news__ID_user__1A14E395">
+      <End Role="users" EntitySet="users" />
+      <End Role="news" EntitySet="news" />
+    </AssociationSet>
+    <AssociationSet Name="FK__users__roleID__15502E78" Association="Self.FK__users__roleID__15502E78">
+      <End Role="roles" EntitySet="roles" />
+      <End Role="users" EntitySet="users" />
+    </AssociationSet>
+    <AssociationSet Name="FK__slider__ID_user__73BA3083" Association="Self.FK__slider__ID_user__73BA3083">
+      <End Role="users" EntitySet="users" />
+      <End Role="slider" EntitySet="sliders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__upload_ch__check__45F365D3" Association="Self.FK__upload_ch__check__45F365D3">
+      <End Role="upload_check" EntitySet="upload_check" />
+      <End Role="upload_check_detail" EntitySet="upload_check_detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__web_compa__ID_us__5CD6CB2B" Association="Self.FK__web_compa__ID_us__5CD6CB2B">
+      <End Role="users" EntitySet="users" />
+      <End Role="web_compareList" EntitySet="web_compareList" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
